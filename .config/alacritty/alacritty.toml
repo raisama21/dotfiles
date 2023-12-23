@@ -1,0 +1,306 @@
+# ALACRITTY(5)
+# NAME
+
+# Alacritty - TOML configuration file format
+# SYNTAX
+
+# Alacritty's configuration file uses the TOML format. The format's 
+# specification can be found at https://toml.io/en/v1.0.0. 
+
+# GENERAL
+
+# This section documents the root level of the configuration file.
+
+
+#==============================================================================
+# Import
+#==============================================================================
+
+# rose-pine theme 
+# variant rose-pine-moon
+# import = ["~/.config/alacritty/theme/rose-pine/rose-pine-dawn.toml"]
+# import = ["~/.config/alacritty/theme/rose-pine/rose-pine-moon.toml"]
+# import = ["~/.config/alacritty/theme/rose-pine/rose-pine.toml"]
+
+# import = ["~/.config/alacritty/theme/catppuccin/catppuccin-frappe.toml"]
+# import = ["~/.config/alacritty/theme/catppuccin/catppuccin-latte.toml"]
+# import = ["~/.config/alacritty/theme/catppuccin/catppuccin-macchiato.toml"]
+# import = ["~/.config/alacritty/theme/catppuccin/catppuccin-mocha.toml"]
+
+
+#==============================================================================
+# WINDOW
+#==============================================================================
+[window]
+
+# This section documents the [window] table of the configuration file.
+
+# dimensions { columns = , lines = }
+
+# Window dimensions (changes require restart)
+
+# Number of lines/columns (not pixels) in the terminal. Both lines and columns
+# must be non-zero for this to take effect. The number of columns must be at
+# least _2_, while using a value of _0_ for columns and lines will fall back
+# to the window manager's recommended size
+
+dimensions = { columns = 0, lines = 0}
+# Default: _{ column = 0, lines = 0 }_
+
+# padding { x = , y = }
+
+# Blank space added around the window in pixels. This padding is scaled
+# by DPI and the specified value is always added at both opposing sides.
+
+padding = { x = 0 , y = 0}
+# Default: _{ x = 0, y = 0 }_
+
+# dynamic_padding
+
+# Spread additional padding evenly around the terminal content.
+
+dynamic_padding = false
+# Default: _false_
+
+# decorations "Full" | "None" | "Transparent" | "Buttonless"
+
+# Window decorations
+
+# *Full*
+# 	Borders and title bar
+# *None*
+# 	Neither borders nor title bar
+# *Transparent* _(macOS only)_
+# 	Title bar, transparent background and title bar buttons
+# *Buttonless* _(macOS only)_
+# 	Title bar, transparent background and no title bar buttons
+
+decorations = "None"
+# Default: _"Full"_
+
+# opacity
+
+# Background opacity as a floating point number from _0.0_ to _1.0_. The value
+# \_0.0_ is completely transparent and _1.0_ is opaque.
+
+opacity = 0.8 
+# Default: _1.0_
+
+# startup_mode "Windowed" | "Maximized" | "Fullscreen" | "SimpleFullscreen"
+
+# Startup mode (changes require restart)
+
+startup_mode = "Maximized"
+# Default: _"Windowed"_
+
+# title
+
+# Window title
+
+title = "Alacritty"
+# Default: _"Alacritty"_
+
+# dynamic_title
+
+# Allow terminal applications to change Alacritty's window title.
+
+dynamic_title = false
+# Default: _true_
+
+# class { instance = , general = } (Linux/BSD only)
+
+# Window class
+
+# On Wayland, *general* is used as _app\_id_ and *instance* is ignored.
+
+class = { instance = "Alacritty", general = "Alacritty" }
+# Default: _{ instance = "Alacritty", general = "Alacritty" }_
+
+# decoration_theme_variant "Dark" | "Light" | "None"
+
+# Override the variant of the System theme/GTK theme/Wayland client side
+# decorations. Set this to _"None"_ to use the system's default theme variant.
+
+# decoration_theme_variant = "None" **
+# Default: _"None"_
+
+# resize_increments
+
+# Prefer resizing window by discrete steps equal to cell dimensions.
+
+resize_increments = false
+# Default: _false_
+
+# option_as_alt "OnlyLeft" | "OnlyRight" | "Both" | "None" (macos only)
+
+# Make _Option_ key behave as _Alt_
+
+# option_as_alt = "OnlyLeft" **
+# Default: _"None"_
+
+
+#==============================================================================
+# Scrolling 
+#==============================================================================
+[scrolling]
+
+# This section documents the [scrolling] table of the configuration file.
+
+# history
+
+# Maximum number of lines in the scrollback buffer.++
+
+# Specifying 0 will disable scrolling.++ Limited to 100000.
+
+history = 10000
+# Default: _10000_
+
+# multiplier
+
+# Number of line scrolled for every input scroll increment.
+
+multiplier = 3
+# Default: _3_
+
+
+#==============================================================================
+# Font
+#==============================================================================
+[font]
+
+# This section documents the [font] table of the configuration file.
+
+# normal { family = , style = }
+
+normal = { family = "jetBrainsMono Nerd Font", style = "Regular" }
+# Default:
+# 	Linux/BSD: _{ family = "monospace", style = "Regular" }_++
+
+# Windows: { family = "Consolas", style = "Regular" }++ macOS: { family = "Menlo", style = "Regular" }
+
+# bold { family = , style = }
+
+# If the family is not specified, it will fall back to the value specified for
+# the normal font.
+
+bold = { family = "jetBrainsMono Nerd Font", style = "Bold" }
+# Default: _{ style = "Bold" }_
+
+# italic { family = , style = }
+
+# If the family is not specified, it will fall back to the value specified for
+# the normal font.
+
+italic = { family = "jetBrainsMono Nerd Font", style = "Italic" }
+# Default: _{ style = "Italic" }_
+
+# bold_italic { family = , style = }
+
+# If the family is not specified, it will fall back to the value specified for
+# the normal font.
+
+bold_italic = { family = "jetBrainsMono Nerd Font", style = "bold Italic" }
+# Default: _{ style = "Bold Italic" }_
+
+# size
+
+# Font size in points.
+
+size = 10.0
+# Default: _11.0_
+
+# offset { x = , y = }
+
+# Offset is the extra space around each character. _y_ can be thought of as
+# modifying the line spacing, and _x_ as modifying the letter spacing.
+
+offset = { x = 0, y = 0}
+# Default: _{ x = 0, y = 0 }_
+
+# glyph_offset { x = , y = }
+
+# Glyph offset determines the locations of the glyphs within their cells with
+# the default being at the bottom. Increasing _x_ moves the glyph to the
+# right, increasing _y_ moves the glyph upward.
+
+glyph_offset = { x = 0, y = 0}
+# Default: _{ x = 0, y = 0 }_
+
+# builtin_box_drawing
+
+# When _true_, Alacritty will use a custom built-in font for box drawing
+# characters (Unicode points _U+2500_ - _U+259f_).
+
+builtin_box_drawing = true
+# Default: _true_
+
+#==============================================================================
+# Cursor 
+#==============================================================================
+[cursor]
+
+# This section documents the [cursor] table of the configuration file.
+
+# vi_mode_style
+
+# If the vi mode cursor style is _None_ or not specified, it will fall back to
+# the active value of the normal cursor.
+
+# See _cursor.style_ for available options.
+
+vi_mode_style = "None"
+# Default: _None_
+
+# blink_interval
+
+# Cursor blinking interval in milliseconds.
+
+blink_interval = 750
+# Default: _750_
+
+# blink_timeout
+
+# Time after which cursor stops blinking, in seconds.
+
+# Specifying _0_ will disable timeout for blinking.
+
+blink_timeout = 5
+# Default: _5_
+
+# unfocused_hollow
+
+# When this is _true_, the cursor will be rendered as a hollow box when the
+# window is not focused.
+
+unfocused_hollow = true
+# Default: _true_
+
+# thickness
+
+# Thickness of the cursor relative to the cell width as floating point number
+# from _0.0_ to _1.0_.
+
+thickness = 0.15
+# Default: _0.15_
+
+# style
+[cursor.style]
+
+# *shape* "Block" | "Underline" | "Beam"
+
+shape = "Block"
+# 	Default: _"Block"_
+
+# *blinking* "Never" | "Off" | "On" | "Always"
+
+# 	*Never*
+# 		Prevent the cursor from ever blinking
+# 	*Off*
+# 		Disable blinking by default
+# 	*On*
+# 		Enable blinking by default
+# 	*Always*
+# 		Force the cursor to always blink
+
+blinking = "On"
+# 	Default: _"Off"_

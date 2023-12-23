@@ -1,0 +1,95 @@
+# i3blocks config file
+#
+# Please see man i3blocks for a complete reference!
+# The man page is also hosted at http://vivien.github.io/i3blocks
+#
+# List of valid properties:
+#
+# align
+# color
+# command
+# full_text
+# instance
+# interval
+# label
+# min_width
+# name
+# separator
+# separator_block_width
+# short_text
+# signal
+# urgent
+
+# Global properties
+
+# The top properties below are applied to every block, but can be overridden.
+# Each block command defaults to the script name to avoid boilerplate.
+# Change $SCRIPT_DIR to the location of your scripts!
+command=$SCRIPT_DIR/$BLOCK_NAME
+separator_block_width=15
+markup=none
+
+# Volume indicator
+
+# The first parameter sets the step (and units to display)
+# The second parameter overrides the mixer selection
+# See the script for details.
+
+[volume]
+#label=♪
+command=$SCRIPT_DIR/volume/volume
+label=VOL
+interval=once
+#STEP=5%
+
+# Memory usage
+
+# The type defaults to "mem" if the instance is not specified.
+[memory]
+label=MEM
+command=$SCRIPT_DIR/memory/memory
+separator=false
+interval=30
+
+[memory]
+label=SWAP
+command=$SCRIPT_DIR/memory/memory
+instance=swap
+separator=true
+interval=30
+
+# CPU usage
+
+# The script may be called with -w and -c switches to specify thresholds,
+# see the script for details.
+[cpu_usage]
+command=$SCRIPT_DIR/cpu_usage/cpu_usage
+label=CPU
+interval=10
+min_width=CPU 100.00%
+
+[load_average]
+label=LOAD
+interval=10
+separator=true
+
+# Battery indicator
+# The battery instance defaults to 0.
+[battery]
+command=$SCRIPT_DIR/battery-poly/battery-poly
+label=⚡
+interval=30
+
+[battery]
+command=low-battery-warning
+interval=30
+
+# Date 
+[time]
+command=date '+%a %b %d, %Y'
+interval=30
+
+# Time
+[time]
+command=date '+%I:%M:%S %p' 
+interval=1

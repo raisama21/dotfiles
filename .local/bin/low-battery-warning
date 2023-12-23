@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+THRESHOLD=30
+
+BATTERY_STATUS=$(acpi -b | awk -F ': ' '{print $2}' | awk -F ', ' '{print $1}')
+BATTERY_PERCENTAGE=$(acpi -b | awk -F ', ' '{print $2}' | awk -F '%' '{print $1}')
+
+if [ "$BATTERY_STATUS" != "Charging" ]; then 
+    if [ "$BATTERY_PERCENTAGE" -lt "$THRESHOLD" ]; then
+        i3-nagbar -t warning -m "Low Battery Warning: Battery is at $BATTERY_PERCENTAGE%. Charge your laptop!"
+    fi
+fi
